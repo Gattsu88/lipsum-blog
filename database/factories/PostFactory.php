@@ -26,11 +26,11 @@ class PostFactory extends Factory
     {
         return [
             'user_id' => random_int(1,10),
-            'category_id' => random_int(1,3),
+            'category_id' => random_int(1,10),
             'title' => $title = $this->faker->sentence,
             'slug' => Str::slug($title),
-            'excerpt' => $this->faker->sentence,
-            'body' => $this->faker->paragraph
+            'excerpt' => '<p>' . implode('</p><p>', $this->faker->paragraphs(2)) . '</p>',
+            'body' =>  '<p>' . implode('</p><p>', $this->faker->paragraphs(6)) . '</p>',
         ];
     }
 }
